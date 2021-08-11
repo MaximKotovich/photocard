@@ -48,16 +48,20 @@ function App() {
   ]
  
 const cardFunc = (item) => {
-   setCurrentCard(item)
+   setCurrentCard(item);
   }
 
-
+  const deleteFunc = (pos) =>{
+    console.log(photoCard);
+   setDeleteCard(photoCard.slice(pos, 1)); 
+   console.log(deleteCard);
+  }
+  
   const [modalActive, setModalActive] = useState(false)
   const [currentCard, setCurrentCard] = useState()
-
-
-
-  const visibleCard = photoCard.map((item) => {
+  const [deleteCard, setDeleteCard] = useState(photoCard)
+  
+  const visibleCard = deleteCard.map((item, pos) => {
   
     return (
       <div className="card" key={item.id}>
@@ -70,6 +74,7 @@ const cardFunc = (item) => {
         <div className="card-description">
           {item.description}
         </div>
+        <button className="deleteBtn" onClick={()=>{deleteFunc(pos)}}>Delete post</button>
       </div>
     )
   })
@@ -79,7 +84,6 @@ const cardFunc = (item) => {
       <Modal 
         active={modalActive} 
         setActive={setModalActive} 
-        photoCard={photoCard}
         card={currentCard} 
       />  
       <div className="container">
