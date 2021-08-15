@@ -52,10 +52,14 @@ const cardFunc = (item) => {
   }
 
   const deleteFunc = (pos) =>{
-    console.log(photoCard);
-   setDeleteCard(photoCard.slice(pos, 1)); 
-   console.log(deleteCard);
+    // const newDeleteCard = deleteCard.filter(pos => pos != pos )
+    // console.log(newDeleteCard)
+    const newDeleteCard = deleteCard.filter( item => item.id != pos)
+    
+    setDeleteCard(newDeleteCard)
+    console.log(deleteCard)
   }
+
   
   const [modalActive, setModalActive] = useState(false)
   const [currentCard, setCurrentCard] = useState()
@@ -74,7 +78,7 @@ const cardFunc = (item) => {
         <div className="card-description">
           {item.description}
         </div>
-        <button className="deleteBtn" onClick={()=>{deleteFunc(pos)}}>Delete post</button>
+        <button className="deleteBtn" onClick={()=>{deleteFunc(item.id)}}>Delete post</button>
       </div>
     )
   })
