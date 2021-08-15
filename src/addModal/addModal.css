@@ -1,0 +1,74 @@
+.modalAdd{
+	display:flex;
+	position: fixed;
+    background-color: rgb(0,0,0,0.5);
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    z-index:99999999; 
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+	transition: 0.5s;
+	pointer-events: none;
+}
+.modalAdd.active{
+	opacity: 1;
+	pointer-events: all;
+}
+
+.addCard{
+	width: 100%;
+	max-width: 450px;
+    background-color: white;
+    padding: 3%;
+    border-radius: 5px;
+}
+.bodyAddCard{
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	padding: 0 20px;
+	box-sizing: border-box;
+}
+.bodyAddCard div{
+	padding: 10px 0;
+}
+.bot-send-mail{
+	box-sizing: border-box;
+	width: 100%;
+}
+.bodyAddCard label,.bodyAddCard input, .bodyAddCard textarea{
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+}
+.bodyAddCard label{
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+.bodyAddCard input, .bodyAddCard textarea{
+	padding: 10px 15px; 
+	margin-top: 10px;
+    resize: none;
+}
+.bodyAddCard label span{
+	color: red;
+}
+.bodyAddCard .bot-send-mail{
+	padding: 15px;
+	margin-top: 10px;
+	background: none;
+	border: none;
+	text-transform: uppercase;
+	color: #fff;
+	font-weight: bold;
+	background-color: green;
+	cursor: pointer;
+	border: 3px green solid;
+	border-radius: 5px;
+}
+.bodyAddCard .bot-send-mail:hover{
+	color: green;
+	background-color: #fff;
+}

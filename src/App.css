@@ -10,14 +10,29 @@
   height: 100%;
   text-align: center;
   margin: 5%;
+  
 }
 
 .card img{
   width: 100%;
+  transition: 1s;
+  cursor: pointer;
+}
+.card img:hover{
+  transform: scale(1.05);
 }
 .deleteBtn{
   width: 50%;
   padding: 2%;
   margin-top:8%;
 }
-
+.showAddModal{
+  padding: 1%;
+  border-radius: 5px;
+}
+.addBtn{
+  display: flex;
+  height: auto;
+    align-items: center;
+    justify-content: center;
+}

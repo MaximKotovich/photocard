@@ -5,6 +5,7 @@ import img2 from "./img/img2.jpg"
 import img3 from "./img/img3.jpg"
 import img4 from "./img/img4.jpg"
 import Modal from "./modalWindow/modal"
+import AddModal from "./addModal/addModal.js"
 
 function App() {
 
@@ -46,31 +47,31 @@ function App() {
       description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa sint nostrum harum omnis delectus eius optio corporis reiciendis atque ab voluptatum consectetur, enim, quod explicabo inventore sapiente, laborum facere quis Magnam similique vel quis soluta nisi voluptas iure nesciunt adipisci nihil eius perspiciatis, consequuntur alias magni consectetur eaque illum, odio earum. Est nam temporibus ducimus veniam tempore possimus quibusdam molestias."
     }
   ]
- 
-const cardFunc = (item) => {
-   setCurrentCard(item);
+
+  const cardFunc = (item) => {
+    setCurrentCard(item);
   }
 
-  const deleteFunc = (pos) =>{
-    // const newDeleteCard = deleteCard.filter(pos => pos != pos )
-    // console.log(newDeleteCard)
-    const newDeleteCard = deleteCard.filter( item => item.id != pos)
-    
+  const deleteFunc = (pos) => {
+    const newDeleteCard = deleteCard.filter(item => item.id != pos)
+
     setDeleteCard(newDeleteCard)
     console.log(deleteCard)
   }
 
-  
-  const [modalActive, setModalActive] = useState(false)
+  const [modalAddCard, setModalAddCard] = useState()
+  const [modalActive, setModalActive] = useState()
   const [currentCard, setCurrentCard] = useState()
   const [deleteCard, setDeleteCard] = useState(photoCard)
-  
+
   const visibleCard = deleteCard.map((item, pos) => {
-  
+
     return (
       <div className="card" key={item.id}>
-        <div className="card-image" onClick={() => {setModalActive(true); cardFunc(item)}}>
+        <div>
+        <div className="card-image" onClick={() => { setModalActive(true); cardFunc(item) }}>
           {item.imgUrl}
+        </div>
         </div>
         <div className="card-title">
           {item.title}
@@ -78,24 +79,32 @@ const cardFunc = (item) => {
         <div className="card-description">
           {item.description}
         </div>
-        <button className="deleteBtn" onClick={()=>{deleteFunc(item.id)}}>Delete post</button>
+        <button className="deleteBtn" onClick={() => { deleteFunc(item.id) }}>Delete post</button>
       </div>
     )
   })
 
   return (
-    <div>      
-      <Modal 
-        active={modalActive} 
-        setActive={setModalActive} 
-        card={currentCard} 
-      />  
+    <div>
+      <Modal
+        active={modalActive}
+        setActive={setModalActive}
+        card={currentCard}
+      />
+      <AddModal
+        addModalActive={modalAddCard}
+        setAddModalActive={setModalAddCard}
+        postArr={deleteCard}
+      />
+      <div className="addBtn">
+        <button className="showAddModal" onClick={() => { setModalAddCard(true) }}>add post</button>
+      </div>
       <div className="container">
         {visibleCard}
       </div>
     </div>
   );
- 
+
 }
 
 export default App;

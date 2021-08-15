@@ -6,7 +6,7 @@ export default function Modal({active, setActive, card}) {
   if (card){
   return( 
     <div className={active ? "modalWindow active" : "modalWindow"} onClick={() => {setActive(false)}}>       
-        <div className="obratnuj-zvonok" autocomplete="off">
+        <div className="obratnuj-zvonok" autocomplete="off"  onClick = {e => e.stopPropagation()}>
         <div className="card-item" >       
           <div className="image">
            {card.imgUrl}            
