@@ -6,47 +6,52 @@ import img3 from "./img/img3.jpg"
 import img4 from "./img/img4.jpg"
 import Modal from "./modalWindow/modal"
 import AddModal from "./addModal/addModal.js"
+import { useDispatch, useSelector } from "react-redux";
 
 function App() {
 
-  const photoCard = [
-    {
-      id: 1,
-      imgUrl: <img src={img1} />,
-      title: "Card 1",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa sint nostrum harum omnis delectus eius optio corporis reiciendis atque ab voluptatum consectetur, enim, quod explicabo inventore sapiente, laborum facere quis Magnam similique vel quis soluta nisi voluptas iure nesciunt adipisci nihil eius perspiciatis, consequuntur alias magni consectetur eaque illum, odio earum. Est nam temporibus ducimus veniam tempore possimus quibusdam molestias."
-    },
-    {
-      id: 2,
-      imgUrl: <img src={img2} />,
-      title: "Card 2",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa sint nostrum harum omnis delectus eius optio corporis reiciendis atque ab voluptatum consectetur, enim, quod explicabo inventore sapiente, laborum facere quis Magnam similique vel quis soluta nisi voluptas iure nesciunt adipisci nihil eius perspiciatis, consequuntur alias magni consectetur eaque illum, odio earum. Est nam temporibus ducimus veniam tempore possimus quibusdam molestias."
-    },
-    {
-      id: 3,
-      imgUrl: <img src={img3} />,
-      title: "Card 3",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa sint nostrum harum omnis delectus eius optio corporis reiciendis atque ab voluptatum consectetur, enim, quod explicabo inventore sapiente, laborum facere quis Magnam similique vel quis soluta nisi voluptas iure nesciunt adipisci nihil eius perspiciatis, consequuntur alias magni consectetur eaque illum, odio earum. Est nam temporibus ducimus veniam tempore possimus quibusdam molestias."
-    },
-    {
-      id: 4,
-      imgUrl: <img src={img4} />,
-      title: "Card 4",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa sint nostrum harum omnis delectus eius optio corporis reiciendis atque ab voluptatum consectetur, enim, quod explicabo inventore sapiente, laborum facere quis Magnam similique vel quis soluta nisi voluptas iure nesciunt adipisci nihil eius perspiciatis, consequuntur alias magni consectetur eaque illum, odio earum. Est nam temporibus ducimus veniam tempore possimus quibusdam molestias."
-    },
-    {
-      id: 5,
-      imgUrl: <img src={img4} />,
-      title: "Card 5",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa sint nostrum harum omnis delectus eius optio corporis reiciendis atque ab voluptatum consectetur, enim, quod explicabo inventore sapiente, laborum facere quis Magnam similique vel quis soluta nisi voluptas iure nesciunt adipisci nihil eius perspiciatis, consequuntur alias magni consectetur eaque illum, odio earum. Est nam temporibus ducimus veniam tempore possimus quibusdam molestias."
-    },
-    {
-      id: 6,
-      imgUrl: <img src={img4} />,
-      title: "Card 6",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa sint nostrum harum omnis delectus eius optio corporis reiciendis atque ab voluptatum consectetur, enim, quod explicabo inventore sapiente, laborum facere quis Magnam similique vel quis soluta nisi voluptas iure nesciunt adipisci nihil eius perspiciatis, consequuntur alias magni consectetur eaque illum, odio earum. Est nam temporibus ducimus veniam tempore possimus quibusdam molestias."
-    }
-  ]
+  // const photoCard = [
+  //   {
+  //     id: 1,
+  //     imgUrl: <img src={img1} />,
+  //     title: "Card 1",
+  //     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa sint nostrum harum omnis delectus eius optio corporis reiciendis atque ab voluptatum consectetur, enim, quod explicabo inventore sapiente, laborum facere quis Magnam similique vel quis soluta nisi voluptas iure nesciunt adipisci nihil eius perspiciatis, consequuntur alias magni consectetur eaque illum, odio earum. Est nam temporibus ducimus veniam tempore possimus quibusdam molestias."
+  //   },
+  //   {
+  //     id: 2,
+  //     imgUrl: <img src={img2} />,
+  //     title: "Card 2",
+  //     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa sint nostrum harum omnis delectus eius optio corporis reiciendis atque ab voluptatum consectetur, enim, quod explicabo inventore sapiente, laborum facere quis Magnam similique vel quis soluta nisi voluptas iure nesciunt adipisci nihil eius perspiciatis, consequuntur alias magni consectetur eaque illum, odio earum. Est nam temporibus ducimus veniam tempore possimus quibusdam molestias."
+  //   },
+  //   {
+  //     id: 3,
+  //     imgUrl: <img src={img3} />,
+  //     title: "Card 3",
+  //     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa sint nostrum harum omnis delectus eius optio corporis reiciendis atque ab voluptatum consectetur, enim, quod explicabo inventore sapiente, laborum facere quis Magnam similique vel quis soluta nisi voluptas iure nesciunt adipisci nihil eius perspiciatis, consequuntur alias magni consectetur eaque illum, odio earum. Est nam temporibus ducimus veniam tempore possimus quibusdam molestias."
+  //   },
+  //   {
+  //     id: 4,
+  //     imgUrl: <img src={img4} />,
+  //     title: "Card 4",
+  //     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa sint nostrum harum omnis delectus eius optio corporis reiciendis atque ab voluptatum consectetur, enim, quod explicabo inventore sapiente, laborum facere quis Magnam similique vel quis soluta nisi voluptas iure nesciunt adipisci nihil eius perspiciatis, consequuntur alias magni consectetur eaque illum, odio earum. Est nam temporibus ducimus veniam tempore possimus quibusdam molestias."
+  //   },
+  //   {
+  //     id: 5,
+  //     imgUrl: <img src={img4} />,
+  //     title: "Card 5",
+  //     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa sint nostrum harum omnis delectus eius optio corporis reiciendis atque ab voluptatum consectetur, enim, quod explicabo inventore sapiente, laborum facere quis Magnam similique vel quis soluta nisi voluptas iure nesciunt adipisci nihil eius perspiciatis, consequuntur alias magni consectetur eaque illum, odio earum. Est nam temporibus ducimus veniam tempore possimus quibusdam molestias."
+  //   },
+  //   {
+  //     id: 6,
+  //     imgUrl: <img src={img4} />,
+  //     title: "Card 6",
+  //     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa sint nostrum harum omnis delectus eius optio corporis reiciendis atque ab voluptatum consectetur, enim, quod explicabo inventore sapiente, laborum facere quis Magnam similique vel quis soluta nisi voluptas iure nesciunt adipisci nihil eius perspiciatis, consequuntur alias magni consectetur eaque illum, odio earum. Est nam temporibus ducimus veniam tempore possimus quibusdam molestias."
+  //   }
+  // ]
+
+  const dispatch = useDispatch();
+  const customers = useSelector(state => state.customers);
+
 
   const cardFunc = (item) => {
     setCurrentCard(item);
@@ -62,16 +67,20 @@ function App() {
   const [modalAddCard, setModalAddCard] = useState()
   const [modalActive, setModalActive] = useState()
   const [currentCard, setCurrentCard] = useState()
-  const [deleteCard, setDeleteCard] = useState(photoCard)
+  const [deleteCard, setDeleteCard] = useState()
 
-  const visibleCard = deleteCard.map((item, pos) => {
+  const cardDelete = (customer) =>{
+    console.log(customer.id)
+      dispatch({type:"GET_CUSTOMER", payload: customer.id})
+  }
 
+  const visibleCard = customers.map((item, pos) => {
     return (
       <div className="card" key={item.id}>
         <div>
-        <div className="card-image" onClick={() => { setModalActive(true); cardFunc(item) }}>
+        {/* <div className="card-image" onClick={() => { setModalActive(true); cardFunc(item) }}>
           {item.imgUrl}
-        </div>
+        </div> */}
         </div>
         <div className="card-title">
           {item.title}
@@ -79,7 +88,7 @@ function App() {
         <div className="card-description">
           {item.description}
         </div>
-        <button className="deleteBtn" onClick={() => { deleteFunc(item.id) }}>Delete post</button>
+        <button className="deleteBtn" onClick={() => { /*deleteFunc(item.id)*/ cardDelete(item) }}>Delete post</button>
       </div>
     )
   })
