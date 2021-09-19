@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import './App.css';
-import img1 from "./img/img1.jpg"
-import img2 from "./img/img2.jpg"
-import img3 from "./img/img3.jpg"
-import img4 from "./img/img4.jpg"
+
 import Modal from "./modalWindow/modal"
 import AddModal from "./addModal/addModal.js"
 import { useDispatch, useSelector } from "react-redux";
@@ -57,17 +54,17 @@ function App() {
     setCurrentCard(item);
   }
 
-  const deleteFunc = (pos) => {
-    const newDeleteCard = deleteCard.filter(item => item.id != pos)
+  // const deleteFunc = (pos) => {
+  //   const newDeleteCard = deleteCard.filter(item => item.id != pos)
 
-    setDeleteCard(newDeleteCard)
-    console.log(deleteCard)
-  }
+  //   setDeleteCard(newDeleteCard)
+  //   console.log(deleteCard)
+  // }
 
   const [modalAddCard, setModalAddCard] = useState()
   const [modalActive, setModalActive] = useState()
   const [currentCard, setCurrentCard] = useState()
-  const [deleteCard, setDeleteCard] = useState()
+  // const [deleteCard, setDeleteCard] = useState()
 
   const cardDelete = (customer) =>{
     console.log(customer.id)
@@ -76,16 +73,16 @@ function App() {
 
   const visibleCard = customers.map((item, pos) => {
     return (
-      <div className="card" key={item.id}>
+      <div className="card" key={item.id} >
         <div>
-        {/* <div className="card-image" onClick={() => { setModalActive(true); cardFunc(item) }}>
+        <div className="card-image" onClick={() => { setModalActive(true); cardFunc(item) }}>
           {item.imgUrl}
-        </div> */}
+        </div>
         </div>
         <div className="card-title">
           {item.title}
         </div>
-        <div className="card-description">
+        <div className="card-description"  onClick={() => {setModalActive(true); cardFunc(item)}}>
           {item.description}
         </div>
         <button className="deleteBtn" onClick={() => { /*deleteFunc(item.id)*/ cardDelete(item) }}>Delete post</button>
@@ -103,7 +100,7 @@ function App() {
       <AddModal
         addModalActive={modalAddCard}
         setAddModalActive={setModalAddCard}
-        postArr={deleteCard}
+        postArr={customers}
       />
       <div className="addBtn">
         <button className="showAddModal" onClick={() => { setModalAddCard(true) }}>add post</button>
