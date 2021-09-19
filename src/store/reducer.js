@@ -43,19 +43,24 @@ const defaultStateCustomer = {
     }
     ],
   }
+ 
+const ADD_CUSTOMER = "ADD_CUSTOMER";
+const GET_CUSTOMER = "GET_CUSTOMER";
 
  export const reducer = (state = defaultStateCustomer, action) => {
     switch (action.type) {
-      case "ADD_CUSTOMER":  
+      case ADD_CUSTOMER:  
       return {
         ...state, customers: [...state.customers, action.payload]
       }
       
-      case "GET_CUSTOMER": 
-      // console.log(action.cash);
+      case GET_CUSTOMER: 
       return {
         ...state,  customers: state.customers.filter(customer => customer.id !== action.payload)
       }
       default:  return state
     }
   }
+
+  export const addCustomerAction = (payload) => ({type: ADD_CUSTOMER, payload})
+  export const getCustomerAction = (payload) => ({type: GET_CUSTOMER, payload})  

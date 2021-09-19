@@ -4,6 +4,7 @@ import './App.css';
 import Modal from "./modalWindow/modal"
 import AddModal from "./addModal/addModal.js"
 import { useDispatch, useSelector } from "react-redux";
+import { getCustomerAction } from "./store/reducer";
 
 function App() {
 
@@ -68,7 +69,7 @@ function App() {
 
   const cardDelete = (customer) =>{
     console.log(customer.id)
-      dispatch({type:"GET_CUSTOMER", payload: customer.id})
+      dispatch(getCustomerAction(customer.id))
   }
 
   const visibleCard = customers.map((item, pos) => {

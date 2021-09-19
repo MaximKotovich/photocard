@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import "./addModal.css";
 import img2 from "./img2.jpg"
 import { useDispatch, useSelector } from "react-redux";
+import { addCustomerAction } from "../store/reducer";
 
 
 export default function Modal({ addModalActive, setAddModalActive, postArr }) {
@@ -19,7 +20,7 @@ export default function Modal({ addModalActive, setAddModalActive, postArr }) {
         title: title,
         description: descr
       }
-      dispatch({type:"ADD_CUSTOMER", payload: post})
+      dispatch(addCustomerAction(post))
     }
   // function createPost(title, descr) {
   //   const post =
